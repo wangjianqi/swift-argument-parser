@@ -44,11 +44,13 @@ public struct Flag<Value>: Decodable, ParsedWrapper {
     self._parsedValue = _parsedValue
   }
   
+  /// :nodoc:
   public init(from decoder: Decoder) throws {
     try self.init(_decoder: decoder)
   }
   
   /// The value presented by this property wrapper.
+  /// :nodoc:
   public var wrappedValue: Value {
     get {
       switch _parsedValue {
@@ -65,6 +67,7 @@ public struct Flag<Value>: Decodable, ParsedWrapper {
 }
 
 extension Flag: CustomStringConvertible {
+  /// :nodoc:
   public var description: String {
     switch _parsedValue {
     case .value(let v):
