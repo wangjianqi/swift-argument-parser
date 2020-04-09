@@ -20,6 +20,7 @@ enum Name: Equatable {
   case longWithSingleDash(String)
   
   init(_ baseName: Substring) {
+    // 添加断言
     assert(baseName.first == "-", "Attempted to create name for unprefixed argument")
     if baseName.hasPrefix("--") {
       self = .long(String(baseName.dropFirst(2)))

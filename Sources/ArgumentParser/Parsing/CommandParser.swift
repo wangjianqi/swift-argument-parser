@@ -16,6 +16,7 @@ struct CommandError: Error {
 
 struct HelpRequested: Error {}
 
+// 命令解析
 struct CommandParser {
   let commandTree: Tree<ParsableCommand.Type>
   var currentNode: Tree<ParsableCommand.Type>

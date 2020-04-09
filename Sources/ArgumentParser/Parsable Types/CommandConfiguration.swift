@@ -10,14 +10,17 @@
 //===----------------------------------------------------------------------===//
 
 /// The configuration for a command.
+// 配置
 public struct CommandConfiguration {
   /// The name of the command to use on the command line.
   ///
   /// If `nil`, the command name is derived by converting the name of
   /// the command type to hyphen-separated lowercase words.
+    // 指令名称
   public var commandName: String?
   
   /// A one-line description of this command.
+    // 摘要
   public var abstract: String
   
   /// A longer description of this command, to be shown in the extended help
@@ -35,6 +38,7 @@ public struct CommandConfiguration {
   public var subcommands: [ParsableCommand.Type]
   
   /// The default command type to run if no subcommand is given.
+    // 类型
   public var defaultSubcommand: ParsableCommand.Type?
   
   /// Flag names to be used for help.
@@ -59,6 +63,7 @@ public struct CommandConfiguration {
   ///     is given.
   ///   - helpNames: The flag names to use for requesting help, simulating
   ///     a Boolean property named `help`.
+    // 默认值和可选值
   public init(
     commandName: String? = nil,
     abstract: String = "",

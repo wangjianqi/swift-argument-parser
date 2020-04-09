@@ -15,6 +15,7 @@
 /// encountered, we save the decoded instances for using later in the
 /// command/subcommand hierarchy.
 struct DecodedArguments {
+    // 类型
   var type: ParsableArguments.Type
   var value: ParsableArguments
 

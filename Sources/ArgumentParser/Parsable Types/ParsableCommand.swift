@@ -10,6 +10,7 @@
 //===----------------------------------------------------------------------===//
 
 /// A type that can be executed as part of a nested tree of commands.
+// 继承
 public protocol ParsableCommand: ParsableArguments {
   /// Configuration for this command, including subcommands and custom help
   /// text.
@@ -32,15 +33,17 @@ public protocol ParsableCommand: ParsableArguments {
 }
 
 extension ParsableCommand {
+    // 默认实现：静态属性
   public static var _commandName: String {
+    // Self: 类型
     configuration.commandName ??
       String(describing: Self.self).convertedToSnakeCase(separator: "-")
   }
-  
+  // 默认实现：静态属性
   public static var configuration: CommandConfiguration {
     CommandConfiguration()
   }
-  
+  // 默认实现 run方法
   public func run() throws {
     throw CleanExit.helpRequest(self)
   }
@@ -56,6 +59,7 @@ extension ParsableCommand {
   ///   `arguments` is `nil`, this uses the program's command-line arguments.
   /// - Returns: A new instance of this type, one of its subcommands, or a
   ///   command type internal to the `ArgumentParser` library.
+    // 扩展方法
   public static func parseAsRoot(
     _ arguments: [String]? = nil
   ) throws -> ParsableCommand {

@@ -36,8 +36,10 @@
 ///
 ///     // usage: command --add
 ///     //    or: command --multiply
+// 属性包裹器：减少重复代码
 @propertyWrapper
 public struct Flag<Value>: Decodable, ParsedWrapper {
+    // 内部的
   internal var _parsedValue: Parsed<Value>
   
   internal init(_parsedValue: Parsed<Value>) {
@@ -144,6 +146,7 @@ extension Flag where Value == Optional<Bool> {
   }
 }
 
+// bool类型
 extension Flag where Value == Bool {
   /// Creates a Boolean property that reads its value from the presence of a
   /// flag.

@@ -30,6 +30,7 @@ enum Parsed<Value> {
 ///
 /// This protocol simplifies the implementations of property wrappers that
 /// wrap the `Parsed` type.
+// 关联类型
 internal protocol ParsedWrapper: Decodable, ArgumentSetProvider {
   associatedtype Value
   var _parsedValue: Parsed<Value> { get }

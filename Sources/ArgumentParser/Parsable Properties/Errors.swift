@@ -28,6 +28,7 @@ public struct ValidationError: Error, CustomStringConvertible {
   }
   
   public var description: String {
+    // 省略return了
     message
   }
 }
@@ -37,15 +38,18 @@ public struct ValidationError: Error, CustomStringConvertible {
 /// If you're printing custom errors messages yourself, you can throw this error
 /// to specify the exit code without adding any additional output to standard
 /// out or standard error.
+// RawRepresentable: 原始值协议
 public struct ExitCode: Error, RawRepresentable, Hashable {
   /// The exit code represented by this instance.
+    // RawRepresentable协议的属性
   public var rawValue: Int32
 
   /// Creates a new `ExitCode` with the given code.
   public init(_ code: Int32) {
     self.rawValue = code
   }
-  
+
+    // RawRepresentable协议的方法
   public init(rawValue: Int32) {
     self.init(rawValue)
   }
@@ -71,6 +75,7 @@ public struct ExitCode: Error, RawRepresentable, Hashable {
 ///
 /// Throwing a `CleanExit` instance from a `validate` or `run` method, or
 /// passing it to `exit(with:)`, exits the program with exit code `0`.
+// 继承自Error
 public enum CleanExit: Error, CustomStringConvertible {
   /// Treat this error as a help request and display the full help message.
   ///
@@ -83,10 +88,12 @@ public enum CleanExit: Error, CustomStringConvertible {
   
   /// Treat this error as a clean exit with the given message.
   case message(String)
-  
+
+    // CustomStringConvertible协议的方法
   public var description: String {
     switch self {
     case .helpRequest: return "--help"
+        // message: 命名
     case .message(let message): return message
     }
   }
@@ -98,6 +105,7 @@ public enum CleanExit: Error, CustomStringConvertible {
   ///
   /// - Parameter command: A command to offer help for, if different from
   ///   the root command.
+    // 生成实例
   public static func helpRequest(_ command: ParsableCommand) -> CleanExit {
     return .helpRequest(type(of: command))
   }

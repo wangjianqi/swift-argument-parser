@@ -11,6 +11,8 @@
 
 struct ArgumentDefinition {
   enum Update {
+    // 可以写到枚举里
+    // 闭包
     typealias Nullary = (InputOrigin, Name?, inout ParsedValues) throws -> Void
     typealias Unary = (InputOrigin, Name?, String, inout ParsedValues) throws -> Void
     
@@ -31,7 +33,7 @@ struct ArgumentDefinition {
     var discussion: String?
     var defaultValue: String?
     var keys: [InputKey]
-    
+    // 第三层嵌套 
     struct Options: OptionSet {
       var rawValue: UInt
       

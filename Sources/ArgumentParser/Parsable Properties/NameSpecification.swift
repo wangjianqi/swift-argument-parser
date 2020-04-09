@@ -12,6 +12,7 @@
 /// A specification for how to represent a property as a command-line argument
 /// label.
 public struct NameSpecification: ExpressibleByArrayLiteral {
+    // 嵌套枚举
   public enum Element: Hashable {
     /// Use the property's name, converted to lowercase with words separated by
     /// hyphens.
@@ -25,6 +26,7 @@ public struct NameSpecification: ExpressibleByArrayLiteral {
     /// To create a single-dash argument, pass `true` as `withSingleDash`. Note
     /// that combining single-dash options and options with short,
     /// single-character names can lead to ambiguities for the user.
+    // 默认参数
     case customLong(_ name: String, withSingleDash: Bool = false)
     
     /// Use the first character of the property's name as a short option label.
@@ -43,7 +45,7 @@ public struct NameSpecification: ExpressibleByArrayLiteral {
   public init<S>(_ sequence: S) where S : Sequence, Element == S.Element {
     self.elements = Set(sequence)
   }
-  
+  // 实现ExpressibleByArrayLiteral协议
   public init(arrayLiteral elements: Element...) {
     self.init(elements)
   }

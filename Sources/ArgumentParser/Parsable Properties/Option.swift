@@ -26,6 +26,8 @@
 /// providing a different string as an argument. `age` defaults to `nil`, while
 /// `name` is a required argument because it is non-`nil` and has no default
 /// value.
+
+// 可选
 @propertyWrapper
 public struct Option<Value>: Decodable, ParsedWrapper {
   internal var _parsedValue: Parsed<Value>

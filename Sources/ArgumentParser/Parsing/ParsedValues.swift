@@ -15,11 +15,11 @@ struct InputKey: RawRepresentable, Equatable {
   init(rawValue: String) {
     self.rawValue = rawValue
   }
-  
+  // CodingKey:协议
   init<C: CodingKey>(_ codingKey: C) {
     self.rawValue = codingKey.stringValue
   }
-  
+  // 类属性
   static let terminator = InputKey(rawValue: "__terminator")
 }
 

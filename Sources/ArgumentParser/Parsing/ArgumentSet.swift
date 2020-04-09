@@ -29,6 +29,7 @@ struct ArgumentSet {
   var kind: Kind
   
   /// Used to generate _help_ text.
+    // 嵌套枚举
   enum Kind {
     /// Independent
     case additive

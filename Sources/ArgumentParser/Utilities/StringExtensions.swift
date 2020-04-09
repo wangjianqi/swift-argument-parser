@@ -92,14 +92,18 @@ extension String {
   ///     // my_url_property
   ///     "myURLProperty".convertedToSnakeCase(separator: "-")
   ///     // my-url-property
+    // 看注释
   func convertedToSnakeCase(separator: Character = "_") -> String {
     guard !isEmpty else { return self }
     var result = ""
     // Whether we should append a separator when we see a uppercase character.
     var separateOnUppercase = true
+    // 遍历
     for index in indices {
+        // 下个下标
       let nextIndex = self.index(after: index)
       let character = self[index]
+        // 大写字母
       if character.isUppercase {
         if separateOnUppercase && !result.isEmpty {
           // Append the separator.

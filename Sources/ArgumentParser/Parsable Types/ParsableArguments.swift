@@ -24,6 +24,7 @@ let _exit: (Int32) -> Never = ucrt._exit
 ///
 /// When you implement a `ParsableArguments` type, all properties must be declared with
 /// one of the four property wrappers provided by the `ArgumentParser` library.
+// 解析参数协议 Decodable: 读取
 public protocol ParsableArguments: Decodable {
   /// Creates an instance of this parsable type using the definitions
   /// given by each property's wrapper.
@@ -33,6 +34,7 @@ public protocol ParsableArguments: Decodable {
   ///
   /// Implement this method to perform validation or other processing after
   /// creating a new instance from command-line arguments.
+    // 异常
   mutating func validate() throws
 }
 
@@ -181,7 +183,7 @@ extension ParsableArguments {
     }
   }
 }
-
+// 协议
 protocol ArgumentSetProvider {
   func argumentSet(for key: InputKey) -> ArgumentSet
 }
